@@ -44,8 +44,8 @@ Perbedaan utama antara strategi _deployment_ **Rolling Update** dan **Recreate**
 
 Untuk mencoba _strategi deployment_ **Recreate** pada **Spring Petclinic REST**, pertama saya perlu memodifikasi file _deployment_ yang sudah ada atau membuat file _deployment_ baru dengan strategi **Recreate**. Saya membuat file bernama `deployment-recreate.yaml` dan mengubah bagian `spec.strategy` dari **RollingUpdate** menjadi **Recreate**. Dalam file ini, saya menghapus konfigurasi _rollingUpdate_ karena parameter tersebut tidak diperlukan untuk strategi **Recreate**. Setelah menyiapkan file _manifest_, saya menjalankan perintah `kubectl apply -f deployment-recreate.yaml` untuk menerapkan _deployment_ dengan strategi **Recreate**. Selama proses ini, saya mengamati bahwa semua _pod_ yang sedang berjalan dihentikan terlebih dahulu sebelum _pod_ baru dibuat, berbeda dengan **Rolling Update** yang melakukan transisi bertahap. Meskipun proses _deployment_ berhasil, aplikasi mengalami _downtime_ singkat selama transisi dari _pod_ lama ke _pod_ baru
 
-### 3. Try _deploying_ the **Spring Petclinic** **REST** using **Recreate** _deployment strategy_ and document your _attempt_
-Untuk menerapkan strategi **Recreate** _deployment_, saya membuat file _manifest_ baru bernama `deployment-recreate.yaml` dengan memodifikasi bagian _strategy_ dari file _deployment_ sebelumnya. Perubahan utama yang dilakukan adalah mengganti `type: RollingUpdate` menjadi `type: Recreate` dan menghapus konfigurasi **rollingUpdate** yang tidak diperlukan untuk strategi **Recreate**.
+### 3. Prepare diﬀerent manifest files for executing Recreate deployment strategy.
+Untuk menerapkan strategi **Recreate** _deployment_, saya membuat file _manifest_ baru bernama `deployment-recreate.yaml` dengan memodifikasi bagian _strategy_ dari file _deployment_ sebelumnya. Perubahan utama yang dilakukan adalah mengganti `type: RollingUpdate` menjadi `type: Recreate` dan menghapus konfigurasi **rollingUpdate** yang tidak diperluk untuk strategi **Recreate**.
 ```yaml
 spec:
   strategy:
